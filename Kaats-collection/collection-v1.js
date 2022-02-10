@@ -4,7 +4,8 @@ const collection = [
       artist: 'Nirvana',
       album: 'In Utero',
       genre: 'Grunge',
-      picture: 'images/pic1.png'
+      picture: 'images/pic1.png',
+      spotify: 'https://open.spotify.com/track/3w5Ekq9O8g0gGFEsT77Ydi?si=864a486db7f84e4a'
     },
 
     {
@@ -12,7 +13,8 @@ const collection = [
       artist: 'Tool',
       album: '10 000 Days',
       genre: 'Rock',
-      picture: 'images/pic2.png'
+      picture: 'images/pic2.png',
+      spotify: 'https://open.spotify.com/track/1lATXTBJDHwawvT1UfxWu3?si=dbb3d83742184f97'
     },  
 
     {
@@ -20,7 +22,8 @@ const collection = [
       artist: 'Incubus',
       album: 'Morning view',
       genre: 'Rock',
-      picture: 'images/pic3.png'
+      picture: 'images/pic3.png',
+      spotify: 'https://open.spotify.com/track/1MvJno497VkQR3RsiJcRVm?si=44ea993abb294425'
     },
 
     {
@@ -28,7 +31,8 @@ const collection = [
       artist: 'Queens of the Stoneage',
       album: 'Songs for the Deaf',
       genre: 'Rock',
-      picture: 'images/pic4.png'
+      picture: 'images/pic4.png',
+      spotify: 'https://open.spotify.com/track/0wzRcekWyVCSyPtlPOeJau?si=d9456862cae345a2'
     },
 
     {
@@ -36,7 +40,8 @@ const collection = [
       artist: 'Incubus',
       album: 'Make Yourself',
       genre: 'Rock',
-      picture: 'images/pic3.png'
+      picture: 'images/pic3.png',
+      spotify: 'https://open.spotify.com/track/1Y13csEpu3TK5gQdzGLrd8?si=0d8402ad75fb4794'
     },
 
     {
@@ -44,7 +49,8 @@ const collection = [
       artist: 'Foo Fighters',
       album: 'The Colour And The Shape',
       genre: 'Rock',
-      picture: 'images/pic6.png'
+      picture: 'images/pic6.png',
+      spotify: 'https://open.spotify.com/track/5UWwZ5lm5PKu6eKsHAGxOk?si=846e5f498e344238'
     },
 
     {
@@ -52,7 +58,8 @@ const collection = [
       artist: 'Elton John',
       album: 'Honky Chateau',
       genre: 'Pop',
-      picture: 'images/pic7.png'
+      picture: 'images/pic7.png',
+      spotify: 'https://open.spotify.com/track/3gdewACMIVMEWVbyb8O9sY?si=461a8be840034050'
     }, 
 
     {
@@ -60,7 +67,8 @@ const collection = [
       artist: 'Stevie Wonder',
       album: 'Songs In The Key Of Life',
       genre: 'Soul',
-      picture: 'images/pic8.png'
+      picture: 'images/pic8.png',
+      spotify: 'https://open.spotify.com/track/3hFh4tsMFhskEXlJ5DCzsG?si=a9b2388a13634c96'
     }, 
 
     {
@@ -68,7 +76,8 @@ const collection = [
       artist: 'Arctic Monkeys',
       album: 'AM',
       genre: 'Rock',
-      picture: 'images/pic9.png'
+      picture: 'images/pic9.png',
+      spotify: 'https://open.spotify.com/track/2AT8iROs4FQueDv2c8q2KE?si=110d2f2324634b70'
     },  
 
     {
@@ -76,7 +85,8 @@ const collection = [
       artist: 'Rise Against',
       album: 'Siren Song Of The Counter-Culture',
       genre: 'Punk Rock',
-      picture: 'images/pic10.png'
+      picture: 'images/pic10.png',
+      spotify: 'https://open.spotify.com/track/5O6SumCYk8Ug81UbfXAPJC?si=14102ce2d44140dd'
     }
   ]
 
@@ -103,7 +113,7 @@ collection.forEach((song)  => {
 
   card.insertAdjacentHTML('beforeend', `<hr/>`)
 
-  card.insertAdjacentHTML('beforeend', `<img src="images/pic0.png" class="spotify">`)
+  card.insertAdjacentHTML('beforeend', `<a href="${song.spotify}" target="blank"><img src="images/pic0.png" class="spotify">`)
 
   card.classList.add(`${song.genre.replace(' ','')}`)
  
@@ -161,32 +171,33 @@ let hideCards = () => {
 
 const displayGenre = (e) => {
 
-  if (e.target.innerText === "Rock" ){    
+  if (e.target.innerText === "ROCK"){    
+    
     hideCards()
     let cardRock = document.querySelectorAll('div.Rock')
     showCards(cardRock)
        
-  }  else if (e.target.innerText === "PunkRock" ){    
+  }  else if (e.target.innerText === "PUNKROCK" ){    
     hideCards()
     let cardPunkRock = document.querySelectorAll('div.PunkRock')
     showCards(cardPunkRock)
        
-  } else if (e.target.innerText === "Grunge" ){    
+  } else if (e.target.innerText === "GRUNGE"){    
   hideCards()
   let cardGrunge = document.querySelectorAll('div.Grunge')
   showCards(cardGrunge)
      
-  } else if (e.target.innerText === "Pop" ){    
+  } else if (e.target.innerText === "POP"){    
     hideCards()
     let cardPop = document.querySelectorAll('div.Pop')
     showCards(cardPop)
        
-  } else if (e.target.innerText === "Soul" ){    
+  } else if (e.target.innerText === "SOUL"){    
     hideCards()
     let cardSoul = document.querySelectorAll('div.Soul')
     showCards(cardSoul)
        
-  } else if (e.target.innerText === "All") {
+  } else if (e.target.innerText === "ALL") {
      let cardAll = document.querySelectorAll('div.card')
      let cardGif = document.querySelectorAll('div.cardX')
     showCards(cardAll)

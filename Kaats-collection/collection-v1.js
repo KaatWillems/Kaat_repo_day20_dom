@@ -1,36 +1,16 @@
-import collection from './collectionlist.js';
+//=======IMPORTS
 
-// LOOP to create content in all cards 
-collection.forEach((song)  => {  
-  
-   
-  let section = document.querySelector('section')
+import createCard from './foreach.js';
 
-  let card = document.createElement('div')
-  card.classList.add('card') 
-  section.appendChild(card);
+//GLOBAL VARIABLES
+let section = document.querySelector('section')
+
+// ForEACH to create content in all cards (imported for forEach.js): 
+createCard()
 
 
-  card.insertAdjacentHTML('afterbegin', `<img src=${song.picture} class="pic">`)
-
-  card.insertAdjacentHTML('beforeend', `<div class="title">${song.title}</div>`)
-
-  card.insertAdjacentHTML('beforeend', `<div class="artist">${song.artist}</div>`)
-
-  card.insertAdjacentHTML('beforeend', `<div class="text"> This song was first released on the album "${song.album}". The genre of the band is most often described as"${song.genre}".</div>`)
-
-  card.insertAdjacentHTML('beforeend', `<hr/>`)
-
-  card.insertAdjacentHTML('beforeend', `<a href="${song.spotify}" target="blank"><img src="images/pic0.png" class="spotify">`)
-
-  card.classList.add(`${song.genre.replace(' ','')}`)
+ //create GIF:
  
- });
-
-
-
- //create GIF 
- let section = document.querySelector('section') 
 
  let cardX = document.createElement('div')
  cardX.classList.add('cardX')  
@@ -41,12 +21,13 @@ collection.forEach((song)  => {
   
 //CREATE FILTERS
 
-  //pseudo
-  // create buttons with each genre   (with ul, li?) (Rock, Punk Rock, Grunge, Pop, Soul)
-  //  add eventlistener 
-    // 1) what to slect the buttons 
-    // 2) click  
-    // action : hide others   
+  /*pseudo
+  create buttons with each genre   (with ul, li?) (Rock, Punk Rock, Grunge, Pop, Soul)
+  add eventlistener 
+   1) what to slect the buttons 
+   2) click  
+   3) action : hide others   
+  */
 
 let header = document.querySelector('header')
 let divButtons = document.createElement ('div')
@@ -63,56 +44,49 @@ divButtons.insertAdjacentHTML("beforeend", '<button>All</button>')
 
 let showCards = (myArray) => {
   myArray.forEach((div) => {
-    div.style.display = 'flex'
-    
+    div.style.display = 'flex'    
   })
 }
 
 let hideCards = () => { 
   let sectionX = Array.from(section.children) 
-
   sectionX.forEach((div) => {
     div.style.display = 'none'
   });
- 
 }
 
 const displayGenre = (e) => {
-
-  if (e.target.innerText === "ROCK"){    
-    
+  if (e.target.innerText === "ROCK"){        
     hideCards()
     let cardRock = document.querySelectorAll('div.Rock')
     showCards(cardRock)
        
-  }  else if (e.target.innerText === "PUNKROCK" ){    
-    hideCards()
-    let cardPunkRock = document.querySelectorAll('div.PunkRock')
-    showCards(cardPunkRock)
+    } else if (e.target.innerText === "PUNKROCK" ){    
+      hideCards()
+      let cardPunkRock = document.querySelectorAll('div.PunkRock')
+      showCards(cardPunkRock)
        
-  } else if (e.target.innerText === "GRUNGE"){    
-  hideCards()
-  let cardGrunge = document.querySelectorAll('div.Grunge')
-  showCards(cardGrunge)
-     
-  } else if (e.target.innerText === "POP"){    
-    hideCards()
-    let cardPop = document.querySelectorAll('div.Pop')
-    showCards(cardPop)
-       
-  } else if (e.target.innerText === "SOUL"){    
-    hideCards()
-    let cardSoul = document.querySelectorAll('div.Soul')
-    showCards(cardSoul)
-       
-  } else if (e.target.innerText === "ALL") {
-     let cardAll = document.querySelectorAll('div.card')
-     let cardGif = document.querySelectorAll('div.cardX')
-    showCards(cardAll)
-    showCards(cardGif)
-  }
-
-
+    } else if (e.target.innerText === "GRUNGE"){    
+      hideCards()
+      let cardGrunge = document.querySelectorAll('div.Grunge')
+      showCards(cardGrunge)
+      
+    } else if (e.target.innerText === "POP"){    
+      hideCards()
+      let cardPop = document.querySelectorAll('div.Pop')
+      showCards(cardPop)
+        
+    } else if (e.target.innerText === "SOUL"){    
+      hideCards()
+      let cardSoul = document.querySelectorAll('div.Soul')
+      showCards(cardSoul)
+        
+    } else if (e.target.innerText === "ALL") {
+      let cardAll = document.querySelectorAll('div.card')
+      let cardGif = document.querySelectorAll('div.cardX')
+      showCards(cardAll)
+      showCards(cardGif)
+    }
 }
 divButtons.addEventListener('click', displayGenre)
 

@@ -1,17 +1,48 @@
+//Code provided by Diogo
 const _initTime = Date.now()
 
 function getElapsedTime(){
   return Number((Date.now() - _initTime) / 1000).toFixed(2) + 's'
 }
 
-
+//MY CODE
+//GLOBAL VARIABLES
 let mainDiv = document.querySelector('.displayedsquare-wrapper');
 let greenSquare = document.querySelector("div.actionsquare.green")   
 let violetSquare = document.querySelector("div.actionsquare.violet") 
+let orangeSquare = document.querySelector("div.actionsquare.orange") 
 let bigList = document.querySelector('ul');
 let arraySquare = [];
+let actionsquares = document.querySelectorAll('.actionsquare')
 
-function clickOnSquare(e){
+
+//FUNCTION CREATING EXTRA SQUARES ON CLICK
+const createSquares = (e) => {
+  if (e.target === greenSquare) {
+      let greenDiv = document.createElement('div');
+      greenDiv.classList='displayedsquare green';
+      mainDiv.appendChild(greenDiv);  
+      
+    } else if (e.target === violetSquare) {
+      let violetDiv = document.createElement('div');
+      violetDiv.classList='displayedsquare violet';
+      mainDiv.appendChild(violetDiv);
+  
+    } else if (e.target === orangeSquare) {
+      let orangeDiv = document.createElement('div');
+      orangeDiv.classList='displayedsquare orange';
+      mainDiv.appendChild(orangeDiv);
+    }
+  }
+  
+  for(let actionsquare of actionsquares){
+    actionsquare.addEventListener('click', (e)=>{createSquares(e)
+    })
+  }
+
+//FUNCTION CREATE NEW LI   
+
+const clickOnSquare =(e) => {
   
 if (e.target === greenSquare) 
 
@@ -55,13 +86,13 @@ if (e.target === greenSquare)
   console.log(getElapsedTime())
 }
 
-const actionsquares = document.querySelectorAll('.actionsquare')
-for(let actionsquare of actionsquares){
-  actionsquare.addEventListener('click', (e)=>{
-      clickOnSquare(e)
-  })
+// const actionsquares = document.querySelectorAll('.actionsquare')
+// for(let actionsquare of actionsquares){
+//   actionsquare.addEventListener('click', (e)=>{
+//       clickOnSquare(e)
+//   })
 
-}
+// }
 
 
 /*Add an event listener on the document <body>, listening for the keypress event. (hint: have a look at this)
